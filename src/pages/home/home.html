@@ -1,17 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Clientes</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-list>
+    <ion-item *ngFor="let cliente of clientes">
+      <h2>{{cliente.clienteID}}</h2>
+      <p>{{cliente.clienteUsuario}}</p>
+      <p>{{cliente.clienteContrasena}}</p>
+      <p>{{cliente.clienteNombre}}</p>
+      <p>{{cliente.codigoPostal}}</p>
+      <p>{{cliente.clienteTelefono}}</p>
+    </ion-item>
+    
+  </ion-list>
+  
+  <ion-item-divider color="light"></ion-item-divider>
+
+  <ion-row>
+    <button (click)="anadirCliente()" ion-button>Añadir Cliente</button>
+  </ion-row>
+
+  <ion-item-divider color="light"></ion-item-divider>
+
+  <ion-row>
+    <ion-input type="number" [(ngModel)]="numero" placeholder="ID del cliente"></ion-input>
+    <button (click)="deleteClientes()" ion-button color="danger">Borrar cliente</button>
+  </ion-row>
+
 </ion-content>
